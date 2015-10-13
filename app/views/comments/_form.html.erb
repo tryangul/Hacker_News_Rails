@@ -1,0 +1,12 @@
+<%= form_for [Comment.find(comment_id), @comment] do |f| %>
+<%= render 'layouts/errors', object: @comment %>
+
+<div class="form-group">
+  <%= f.label :body, "Add a comment" %>
+  <%= f.text_area :body, class: 'form-control' %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Post Comment", class: 'btn btn-primary' %>
+</div>
+<% end %>

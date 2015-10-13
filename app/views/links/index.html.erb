@@ -1,0 +1,22 @@
+
+<% if user_signed_in? %>
+  <%= link_to 'post a link', new_link_path, class: 'btn btn-default' %>
+<% end %>
+
+<ul>
+  <% @links.each do |link| %>
+    <%= link_to link.url do %>
+      <li>
+        <%= link.title %>
+        <ul>
+          <%= link_to link_path(link) do %>
+            <li>View Comments (<%= link.comments.length %>)</li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+
+  <% end %>
+</ul>
+
+<%= will_paginate @links, renderer: BootstrapPagination::Rails %>

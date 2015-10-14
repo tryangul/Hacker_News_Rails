@@ -17,8 +17,6 @@
   <% end %>
 <% end %>
 
-<%# render 'layouts/comments_form' %>
-
 <% @link.comments.each_with_index do |comment, index| %>
   <div class="panel panel-default" id="comment-#{comment.id}">
     <div class="panel-heading">
@@ -29,7 +27,6 @@
           <%= comment.body %>
         </p>
       </div>
-      <!-- <button id="respond#{index}" onclick="addCommentForm(this, <%= comment.id %>)" class="btn btn-default">reply</button> -->
 
       <%= button_to "reply", new_comment_comment_path(comment.id), method: "get", remote: true %>
       <div id="form-<%= comment.id %>">

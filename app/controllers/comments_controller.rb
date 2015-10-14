@@ -19,7 +19,8 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @commentable
+      # redirect_to @commentable
+      # redirect_to link_path(params[:id])
       # render :template 'links/show'
 
     else

@@ -31,28 +31,16 @@
       </div>
       <!-- <button id="respond#{index}" onclick="addCommentForm(this, <%= comment.id %>)" class="btn btn-default">reply</button> -->
 
-      <%= button_to "reply", new_comment_comment_path(comment.id), id: "button-#{index}", method: "get", remote: true %>
+      <%= button_to "reply", new_comment_comment_path(comment.id), method: "get", remote: true %>
       <div id="form-<%= comment.id %>">
 
       </div>
+      <% if comment.comments.any? %>
+        <%= render 'comment_recursion', :comment => comment %>
+      <% end %>
   </div>
 <% end %>
 
 <div id="comment-box" style: "height: 300;">
 
 </div>
-
-<script>
-  // $(document).ready(function() {
-  //   $("#respond")
-  // });
-
-  function addCommentForm(div, comment) {
-    var test = document.createElement("div");
-    var html = "<%%= render 'comments/form', {comment_id:" + comment + "} %>";
-    html.replace("%%", "%");
-    debugger;
-    test.innerHTML = html;
-    div.parentElement.appendChild(test);
-  }
-</script>

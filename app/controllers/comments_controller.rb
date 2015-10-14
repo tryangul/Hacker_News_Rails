@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:comment_id])
+    # @comment = Comment.find(params[:comment_id])
   end
 
   def new
@@ -20,6 +20,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       redirect_to @commentable
+      # render :template 'links/show'
+
     else
     end
   end

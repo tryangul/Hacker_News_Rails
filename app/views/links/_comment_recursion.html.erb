@@ -1,0 +1,21 @@
+<% comment.comments.each do |comment| %>
+<div style="margin-left:2em;" class="panel panel-default" id="comment-#{comment.id}">
+  <div class="panel-heading">
+    <%= comment.user.name %>
+  </div>
+  <div class="panel-body">
+    <p class="lead">
+      <%= comment.body %>
+    </p>
+  </div>
+
+  <%= button_to "reply", new_comment_comment_path(comment.id), method: "get", remote: true %>
+  <div id="form-<%= comment.id %>">
+
+  </div>
+
+  <% if comment.comments.any? %>
+    <%= render 'comment_recursion', :comment => comment %>
+  <% end %>
+</div>
+<% end %>
